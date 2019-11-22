@@ -60,5 +60,32 @@ public class MainActivity extends AppCompatActivity {
         cAverage = (Float.parseFloat(cStudent.getText().toString()) / totalStudents) * 100;
         dAverage = (Float.parseFloat(dStudent.getText().toString()) / totalStudents) * 100;
         fAverage = (Float.parseFloat(fStudent.getText().toString()) / totalStudents) * 100;
+
+        int studentTotal = Integer.parseInt(numOfStudents.getText().toString());
+        if(studentTotal <= 0 && studentTotal >= 100){
+            //Display error
+            numOfStudents.setText("*");
+        }
+
+        if(aAverage <= 0f && aAverage >= 100f){
+            //Display error
+            aStudent.setText("*");
+        }
+        if(bAverage <= 0f && bAverage >= 100f){
+            //Display error
+            bStudent.setText("*");
+        }
+        if(cAverage <= 0f && cAverage >= 100f){
+            //Display error
+            cStudent.setText("*");
+        }
+        if(dAverage <= 0f && dAverage >= 100f){
+            //Display error
+            dStudent.setText("*");
+        }
+        if(fAverage <= 0f && fAverage >= 100f){
+            //Display error
+            fStudent.setText("*");
+        }
     }
 }
