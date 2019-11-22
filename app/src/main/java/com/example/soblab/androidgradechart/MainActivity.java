@@ -1,12 +1,15 @@
 package com.example.soblab.androidgradechart;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import com.github.mikephil.charting.charts.BarChart;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,12 +37,16 @@ public class MainActivity extends AppCompatActivity {
 
                 //Alert Dialog
                 AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                builder.setMessage("A Average: " + String.valueOf(aAverage) + "\n" + "B Average: " + String.valueOf(bAverage) + "\n" + "C Average: " +String.valueOf(cAverage) + "\n"+ "D Average: " +String.valueOf(dAverage) + "\n"+"F Average: " + String.valueOf(fAverage) + "\n").setTitle("Your averages");
+                builder.setMessage("A Average: " + String.valueOf(aAverage) + "%\n" + "B Average: " + String.valueOf(bAverage) + "%\n"
+                        + "C Average: " +String.valueOf(cAverage) + "%\n"+ "D Average: " +String.valueOf(dAverage) +
+                        "%\n"+"F Average: " + String.valueOf(fAverage) + "%\n").setTitle("Your averages");
 
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         //Go to next fragment
+                        Intent I = new Intent(MainActivity.this, BarChartActivity.class);
+                        startActivity(I);
                     }
                 });
                 builder.show();
@@ -48,10 +55,10 @@ public class MainActivity extends AppCompatActivity {
     }
     private void calcPercentage(){
         float totalStudents = Float.parseFloat(numOfStudents.getText().toString());
-        aAverage = Float.parseFloat(aStudent.getText().toString()) / totalStudents;
-        bAverage = Float.parseFloat(bStudent.getText().toString()) / totalStudents;
-        cAverage = Float.parseFloat(cStudent.getText().toString()) / totalStudents;
-        dAverage = Float.parseFloat(dStudent.getText().toString()) / totalStudents;
-        fAverage = Float.parseFloat(fStudent.getText().toString()) / totalStudents;
+        aAverage = (Float.parseFloat(aStudent.getText().toString()) / totalStudents) * 100;
+        bAverage = (Float.parseFloat(bStudent.getText().toString()) / totalStudents) * 100;
+        cAverage = (Float.parseFloat(cStudent.getText().toString()) / totalStudents) * 100;
+        dAverage = (Float.parseFloat(dStudent.getText().toString()) / totalStudents) * 100;
+        fAverage = (Float.parseFloat(fStudent.getText().toString()) / totalStudents) * 100;
     }
 }
